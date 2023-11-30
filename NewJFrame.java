@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.*;
-import java.awt.Polygon;
+//import java.awt.Polygon;
 public class NewJFrame extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
@@ -29,7 +29,7 @@ class Driver extends Thread //This is the main class with the main frame
     int sim_status=0;           //If the simulation has to stop or not
     JButton stop_sim,time_inter1,time_inter2,time_inter3,cars_bucket1,cars_bucket2,cars_bucket3,spawn_inter1,spawn_inter2,spawn_inter3,toggle_lights,clear_traffic; //Jbutton declarations
     JLabel light_intervalL,cars_on_mapL,spawnL,total_carsL,ts,cs,ss;                  //JLabel declarations
-    int traff_mul=1000,spawn_mul=50,cars_allow=20; //Initializing traffic and spawn multipliers after which an action takes place
+    int traff_mul=1000,spawn_mul=50,cars_allow=15; //Initializing traffic and spawn multipliers after which an action takes place
     double spawn_sec=((double)(spawn_mul*5))/1000; //To convert spawn multiplier into seconds for display purpose
 
     JFrame frame;
@@ -522,6 +522,8 @@ class Driver extends Thread //This is the main class with the main frame
                             {
                                 if(carObj[i].curr_x<1090 && carObj[i].curr_x>1050)
                                     carObj[i].moving=0;
+                                if(carObj[i].curr_x<510 && carObj[i].curr_x>500)
+                                    carObj[i].moving=0;
                             }
                             else
                                 carObj[i].moving=1;
@@ -769,6 +771,8 @@ class Driver extends Thread //This is the main class with the main frame
             Ellipse2D.Double i1l2=new Ellipse2D.Double(315,720,100/4,100/4);//i2 top left
             Ellipse2D.Double i4l1=new Ellipse2D.Double(860,720,100/4,100/4);//i4 top left
             Ellipse2D.Double i2l4=new Ellipse2D.Double(1065,560,100/4,100/4);  //bottom right light
+            Ellipse2D.Double i4l4=new Ellipse2D.Double(510,560,100/4,100/4);  //i1 bottom right light
+            Ellipse2D.Double i3l4=new Ellipse2D.Double(510,910,100/4,100/4);  //i1 bottom right light
             Rectangle2D back=new Rectangle2D.Float(); 
             Rectangle2D vroad1=new Rectangle2D.Float(); //Vertical road
             Rectangle2D vroad2=new Rectangle2D.Float(); //Vertical road
@@ -840,6 +844,8 @@ class Driver extends Thread //This is the main class with the main frame
                 g2.draw(i1l1);
                 g2.draw(i2l4);
                 g2.draw(i4l1);
+                g2.draw(i4l4);
+                g2.draw(i3l4);
                 g2.setColor(Color.green);
                 g2.fill(EW);
                 g2.fill(i1l1);
@@ -849,6 +855,8 @@ class Driver extends Thread //This is the main class with the main frame
                 g2.fill(N);
                 g2.fill(WE);
                 g2.fill(i2l4);
+                g2.fill(i3l4);
+                g2.fill(i4l4);
                 
                 
             }
@@ -862,9 +870,13 @@ class Driver extends Thread //This is the main class with the main frame
                 g2.draw(i4l1);
                 g2.draw(i1l1);
                 g2.draw(i2l4);
+                g2.draw(i4l4);
+                g2.draw(i3l4);
                 g2.setColor(Color.GREEN);
                 g2.fill(WE);
                 g2.fill(i2l4);
+                g2.fill(i4l4);
+                g2.fill(i3l4);
                 g2.setColor(Color.red);
                 g2.fill(EW);
                 g2.fill(i1l1);
@@ -885,6 +897,8 @@ class Driver extends Thread //This is the main class with the main frame
                 g2.draw(i1l1);
                 g2.draw(i4l1);
                 g2.draw(i2l4);
+                g2.draw(i4l4);
+                g2.draw(i3l4);
                 g2.setColor(Color.GREEN);
                 g2.fill(N);
                 g2.setColor(Color.red);
@@ -894,6 +908,8 @@ class Driver extends Thread //This is the main class with the main frame
                 g2.fill(i4l1);
                 g2.fill(WE);
                 g2.fill(i1l2);
+                g2.fill(i4l4);
+                g2.fill(i3l4);
             }
 
             for(int i=0;i<50;i++) //For choosing color of the car and paiting the car on the map
