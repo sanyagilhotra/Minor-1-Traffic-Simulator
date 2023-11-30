@@ -19,4 +19,4 @@ This project is a simple traffic congestion simulator implemented in Java. It vi
 1. Clone the repository: 
 
    ```bash
-   [git clone https://github.com/sanyagilhotra/Minor-1-Traffic-Simulator.git]
+   git clone https://github.com/sanyagilhotra/Minor-1-Traffic-Simulator.git
